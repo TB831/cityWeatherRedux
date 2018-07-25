@@ -5,13 +5,13 @@ import Chart from '../components/Chart.js';
 class WeatherList extends Component {
   renderWeather(cityData) {
     const cityName = cityData.city.name;
-    const temps = cityData.list.map(weather => weather.main.temp);
+    const farenheit = cityData.list.map(weather => (weather.main.temp * (9/5) - 459));
     const pressure = cityData.list.map(weather => weather.main.pressure);
     const humidity = cityData.list.map(weather => weather.main.humidity);
     return (
       <tr key={cityName}>
         <td>{cityName}</td>
-        <td><Chart color='blue' data={temps} units='K' /></td>
+        <td><Chart color='blue' data={farenheit} units='F' /></td>
         <td><Chart color='orange' data={pressure} units='hPa' /></td>
         <td><Chart color='green' data={humidity} units='%' /></td>
       </tr>
@@ -24,9 +24,9 @@ class WeatherList extends Component {
         <thead>
           <tr>
             <th>City</th>
-            <th>Temperature(K)</th>
-            <th>Pressure(hPa)</th>
-            <th>Humidity(%)</th>
+            <th>5 day Temperature(F)</th>
+            <th>5 day Pressure(hPa)</th>
+            <th>5 day Humidity(%)</th>
           </tr>
         </thead>
         <tbody>
