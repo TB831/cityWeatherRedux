@@ -6,7 +6,7 @@ export const FETCH_WEATHER = 'FETCH_WEATHER';
 // Action creators always return an object
 export function fetchWeather(city) {
   const url = `${ROOT_URL}&q=${city},us`;
-  const request = axios.get(url);
+  const request = axios.get(url); // Ajax request w/ Axios
 
   return {
     type: FETCH_WEATHER,
